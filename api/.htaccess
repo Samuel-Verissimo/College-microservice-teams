@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /api/
+RewriteRule ^coach$ index.php?route=coach [L]
+RewriteRule ^team$ index.php?route=team [L]
