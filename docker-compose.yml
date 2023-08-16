@@ -13,19 +13,15 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./create_db:/docker-entrypoint-initdb.d
       
-  php:
-    image: php:apache
-    build:
-      dockerfile: Dockerfile
+  laravel:
+    build: .
     ports:
       - "8100:80"
     depends_on:
       - mysql
     volumes:
-      - .:/var/www/html
-
-# para reconstruirmos o banco, ou alterar alguma configuracao, precisamos apagar o volume no docker
+      - ./laravel/:/var/www/html
+    
 volumes: 
   mysql_data:
